@@ -26,12 +26,10 @@ export const updateProject = async (req, res) => {
     } catch (err) {
         res.send({ "status": false, "message": err });
     }
-
 };
 
 
 export const deleteProject = async (req, res) => {
-
     try {
         const { _id } = req.params;
         console.log(_id);
@@ -55,7 +53,7 @@ export const getProject = async (req, res) => {
 
 export const getAllProjects = async (req, res) => {
     try {
-        const allProject = await Projects.find().populate("category.title");
+        const allProject = await Projects.find().populate("category").sort({ 'createdAt': -1 });
         res.send({ "status": true, "message": allProject });
     } catch (err) {
         console.log(err);

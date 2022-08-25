@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import projects from './routes/projects.js';
 import categories from './routes/categories.js';
 
@@ -9,6 +10,7 @@ const app = express();
 
 // middlewares
 dotenv.config();
+app.use(cors());
 app.use(express.json());
 
 app.listen(process.env.PORT, () => console.log(`server is running on port ${process.env.PORT}`));
